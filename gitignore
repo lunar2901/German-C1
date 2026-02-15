@@ -1,0 +1,33 @@
+# GitHub Pages Ignore File
+# German C1 Learning System
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Backup Files
+*.bak
+*.backup
+*.tmp
+
+# Node (if using npm in future)
+node_modules/
+package-lock.json
+
+# System
+.env
+.env.local
+
+# Don't ignore these files (they're needed)
+!app.html
+!verbs-db.js
+!README.md

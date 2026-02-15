@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇩🇪 German C1 - Professional Vocabulary Mastery</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text: #1e293b;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { font-size: 1.1em; opacity: 0.95; }
+        .header .subtitle { font-size: 0.9em; opacity: 0.85; margin-top: 10px; }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            padding: 20px 40px;
+            background: var(--light);
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            border: none;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: var(--text);
+        }
+
+        .nav-tab:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .nav-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .verb-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .verb-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+        }
+
+        .verb-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .verb-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .verb-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--light);
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .cefr-badge {
+            padding: 6px 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verb-english {
+            font-size: 1.1em;
+            color: var(--secondary);
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .conjugation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .conjugation-table th {
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .conjugation-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .conjugation-table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: var(--primary);
+            margin: 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e0e7ff 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid var(--primary);
+        }
+
+        .info-box strong {
+            color: var(--primary);
+        }
+
+        .example-box {
+            background: white;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .de { color: #667eea; font-weight: 600; }
+        .en { color: #666; font-style: italic; }
+
+        .prefix-item {
+            background: white;
+            padding: 12px;
+            margin: 8px 0;
+            border-left: 3px solid var(--success);
+            border-radius: 4px;
+        }
+
+        .prefix-header {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .prefix-name {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 80px;
+        }
+
+        .collocation-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin: 5px 5px 5px 0;
+        }
+
+        .etymology {
+            background: #fef3c7;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 3px solid #f59e0b;
+            font-style: italic;
+            color: #7c2d12;
+        }
+
+        .mnemonic {
+            background: #dbeafe;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 3px solid #3b82f6;
+            color: #1e40af;
+        }
+
+        .frequency-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--warning);
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .trainer-section {
+            background: linear-gradient(135deg, var(--light) 0%, #e0e7ff 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .trainer-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .trainer-prompt {
+            font-size: 1.3em;
+            color: var(--primary);
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1em;
+            margin: 15px 0;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            opacity: 0.9;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            transition: width 0.3s;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--border);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .footer {
+            background: var(--light);
+            padding: 20px 40px;
+            text-align: center;
+            color: #666;
+            border-top: 2px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 20px; }
+            .header h1 { font-size: 1.8em; }
+            .nav-tabs { padding: 15px 20px; }
+            .content { padding: 20px; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🇩🇪 German C1 Vocabulary Mastery</h1>
+            <p>Professional-Grade Learning System</p>
+            <p class="subtitle">Based on Goethe Institut & DW Deutsche Welle Standards | CEFR Framework</p>
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('vocab')">📚 Vocabulary</button>
+            <button class="nav-tab" onclick="switchTab('trainer')">💪 Interactive Trainer</button>
+            <button class="nav-tab" onclick="switchTab('grammar')">📖 Grammar Rules</button>
+            <button class="nav-tab" onclick="switchTab('guide')">🗺️ Learning Path</button>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- VOCABULARY SECTION -->
+            <div id="vocab" class="section active">
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalVerbs">14+</div>
+                        <div class="stat-label">Total Verbs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="learnedCount">0</div>
+                        <div class="stat-label">Learned Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stretchCount">0/7</div>
+                        <div class="stat-label">Prefixes Covered</div>
+                    </div>
+                </div>
+
+                <!-- Filter Controls -->
+                <div style="display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="filterByCategory('all')">All Verbs</button>
+                    <button class="btn" onclick="filterByCategory('auxiliary')">Auxiliary</button>
+                    <button class="btn" onclick="filterByCategory('modal')">Modal</button>
+                    <button class="btn" onclick="filterByCategory('regular')">Regular</button>
+                    <button class="btn" onclick="filterByCategory('irregular')">Irregular</button>
+                </div>
+
+                <!-- Search -->
+                <input type="text" placeholder="🔍 Search verbs..." style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; margin: 20px 0; font-size: 1em;" id="searchInput" onkeyup="searchVerbs()">
+
+                <!-- Verb Display -->
+                <div id="verbContainer"></div>
+            </div>
+
+            <!-- TRAINER SECTION -->
+            <div id="trainer" class="section">
+                <h2 class="section-title">💪 Interactive Spaced Repetition Trainer</h2>
+
+                <div class="trainer-section">
+                    <div style="margin-bottom: 20px;">
+                        <h3>Select Training Mode:</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 15px 0;">
+                            <button class="btn btn-primary" onclick="startTrainer('de-en')">🇩🇪→🇬🇧 German to English</button>
+                            <button class="btn btn-primary" onclick="startTrainer('en-de')">🇬🇧→🇩🇪 English to German</button>
+                            <button class="btn btn-primary" onclick="startTrainer('conjugate')">⚙️ Conjugate Verbs</button>
+                            <button class="btn btn-primary" onclick="startTrainer('prefix')">➕ Prefix Practice</button>
+                        </div>
+                    </div>
+
+                    <div class="trainer-card">
+                        <div id="trainerContent" style="text-align: center;">
+                            <p style="color: #999;">← Select a training mode to begin</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button class="btn btn-success" onclick="recordAnswer('correct')" id="correctBtn" style="display: none;">✅ Correct</button>
+                        <button class="btn" style="background: var(--warning); color: white;" onclick="recordAnswer('partial')" id="partialBtn" style="display: none;">⚠️ Partial</button>
+                        <button class="btn" style="background: var(--danger); color: white;" onclick="recordAnswer('wrong')" id="wrongBtn" style="display: none;">❌ Wrong</button>
+                    </div>
+                </div>
+
+                <div class="progress-bar" id="progressBar" style="display: none;">
+                    <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                </div>
+                <p id="progressText" style="text-align: center; color: #666;"></p>
+            </div>
+
+            <!-- GRAMMAR SECTION -->
+            <div id="grammar" class="section">
+                <h2 class="section-title">📖 Grammar Rules & Patterns</h2>
+
+                <div class="info-box">
+                    <strong>📌 Understanding German Verb Structure</strong>
+                    <p style="margin-top: 10px;">German verbs are conjugated based on:
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Person:</strong> ich, du, er/sie/es, wir, ihr, sie/Sie</li>
+                        <li><strong>Tense:</strong> Präsens, Präteritum, Perfekt, Plusquamperfekt, Futur I/II</li>
+                        <li><strong>Mood:</strong> Indikativ, Konjunktiv I/II, Imperativ</li>
+                        <li><strong>Aspect:</strong> Regular vs. Irregular verbs</li>
+                    </ul></p>
+                </div>
+
+                <h3 class="section-title" style="margin-top: 30px;">Regular Verb Pattern (schwache Verben)</h3>
+                <table class="conjugation-table">
+                    <thead>
+                        <tr>
+                            <th>Person</th>
+                            <th>Präsens (Present)</th>
+                            <th>Präteritum (Past)</th>
+                            <th>Perfekt (Perfect)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ich</strong></td>
+                            <td>mache</td>
+                            <td>machte</td>
+                            <td>habe gemacht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>du</strong></td>
+                            <td>machst</td>
+                            <td>machtest</td>
+                            <td>hast gemacht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>er/sie/es</strong></td>
+                            <td>macht</td>
+                            <td>machte</td>
+                            <td>hat gemacht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>wir</strong></td>
+                            <td>machen</td>
+                            <td>machten</td>
+                            <td>haben gemacht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ihr</strong></td>
+                            <td>macht</td>
+                            <td>machtet</td>
+                            <td>habt gemacht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>sie/Sie</strong></td>
+                            <td>machen</td>
+                            <td>machten</td>
+                            <td>haben gemacht</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-title" style="margin-top: 30px;">Irregular Verb Pattern (starke Verben)</h3>
+                <table class="conjugation-table">
+                    <thead>
+                        <tr>
+                            <th>Person</th>
+                            <th>Präsens</th>
+                            <th>Präteritum</th>
+                            <th>Perfekt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ich</strong></td>
+                            <td>sehe</td>
+                            <td>sah</td>
+                            <td>habe gesehen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>du</strong></td>
+                            <td>siehst</td>
+                            <td>sahst</td>
+                            <td>hast gesehen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>er/sie/es</strong></td>
+                            <td>sieht</td>
+                            <td>sah</td>
+                            <td>hat gesehen</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-title" style="margin-top: 30px;">Separable vs. Inseparable Prefixes</h3>
+                
+                <div class="grid-2">
+                    <div class="info-box">
+                        <strong>SEPARABLE Prefixes (Trennbare)</strong>
+                        <p style="margin-top: 10px;">Split in present tense:</p>
+                        <div class="example-box">
+                            Ich <span class="de">fahre</span> morgen <span class="de">ab</span>.<br>
+                            <span class="en">(I depart tomorrow.)</span>
+                        </div>
+                        <p style="margin-top: 10px;"><strong>Common:</strong> ab-, an-, auf-, aus-, mit-, zu-, zurück-</p>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>INSEPARABLE Prefixes (Untrennbare)</strong>
+                        <p style="margin-top: 10px;">Never split:</p>
+                        <div class="example-box">
+                            Ich <span class="de">besuche</span> dich morgen.<br>
+                            <span class="en">(I visit you tomorrow.)</span>
+                        </div>
+                        <p style="margin-top: 10px;"><strong>Common:</strong> be-, er-, ver-, über-, zer-, ent-</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GUIDE SECTION -->
+            <div id="guide" class="section">
+                <h2 class="section-title">🗺️ Your Learning Path to C1 Mastery</h2>
+
+                <div class="info-box">
+                    <strong>📚 CEFR Framework</strong>
+                    <p style="margin-top: 10px;">The Common European Framework of Reference divides German into 6 levels:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>A1-A2:</strong> Basic User (0-150 hours)</li>
+                        <li><strong>B1-B2:</strong> Independent User (150-600 hours)</li>
+                        <li><strong>C1-C2:</strong> Proficient User (600+ hours)</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">📅 4-Week Intensive Learning Plan</h3>
+
+                <div class="timeline">
+                    <h4>WEEK 1: Foundation (Auxiliary & Modal Verbs)</h4>
+                    <ul style="margin: 15px 0 15px 20px;">
+                        <li>Day 1-2: sein, haben, werden (master conjugations)</li>
+                        <li>Day 3-4: können, müssen, dürfen, wollen (modal power words)</li>
+                        <li>Day 5-7: Mix & spaced repetition with trainer</li>
+                    </ul>
+
+                    <h4 style="margin-top: 20px;">WEEK 2: Action Verbs (Top 10 Most Used)</h4>
+                    <ul style="margin: 15px 0 15px 20px;">
+                        <li>Day 8-9: machen, geben, nehmen (versatility)</li>
+                        <li>Day 10-11: kommen, gehen, sehen (motion & senses)</li>
+                        <li>Day 12-14: Integration with prefixes</li>
+                    </ul>
+
+                    <h4 style="margin-top: 20px;">WEEK 3: Prefixes Mastery (Separable)</h4>
+                    <ul style="margin: 15px 0 15px 20px;">
+                        <li>Day 15-17: ab-, an-, auf-, aus- (practice with verbs)</li>
+                        <li>Day 18-20: mit-, zu-, zurück- (compound meanings)</li>
+                        <li>Day 21: Full prefix combinations</li>
+                    </ul>
+
+                    <h4 style="margin-top: 20px;">WEEK 4: Advanced Integration</h4>
+                    <ul style="margin: 15px 0 15px 20px;">
+                        <li>Day 22-25: Inseparable prefixes (be-, er-, ver-, über-, zer-, ent-)</li>
+                        <li>Day 26-27: Complex sentence building</li>
+                        <li>Day 28: Full assessment & real-world application</li>
+                    </ul>
+                </div>
+
+                <div class="info-box" style="margin-top: 30px;">
+                    <strong>✨ Success Tips Based on Goethe Institut Standards</strong>
+                    <ul style="margin: 15px 0 0 20px;">
+                        <li>✅ <strong>Speak Aloud:</strong> Pronunciation matters. Say sentences out loud daily</li>
+                        <li>✅ <strong>Spaced Repetition:</strong> Review verbs on Day 1, 3, 7, 14 (proven to be 2x faster)</li>
+                        <li>✅ <strong>Contextual Learning:</strong> Learn verbs in sentences, not in isolation</li>
+                        <li>✅ <strong>Prefix Recognition:</strong> Prefixes multiply verb meanings by 10x (one verb = 10 meanings)</li>
+                        <li>✅ <strong>Daily Consistency:</strong> 30 minutes daily > 3 hours once weekly</li>
+                        <li>✅ <strong>Active Recall:</strong> Test yourself first, then check answers</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>🇩🇪 German C1 Mastery | Professional Learning System | Sources: Goethe Institut, DW Deutsche Welle, CEFR Framework</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">❤️ Built for serious learners | Designed for GitHub hosting</p>
+        </div>
+    </div>
+
+    <script>
+        // ======== TAB SWITCHING ========
+        function switchTab(tabName) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // ======== VOCABULARY DISPLAY ========
+        let allVerbs = []; // Will be populated from verbs-db.js
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        function loadVocabulary() {
+            const container = document.getElementById('verbContainer');
+            if (allVerbs.length === 0) return;
+
+            let filtered = allVerbs;
+
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(v => v.category === currentCategory);
+            }
+
+            if (searchQuery) {
+                filtered = filtered.filter(v => 
+                    v.infinitive.includes(searchQuery.toLowerCase()) ||
+                    v.english.includes(searchQuery.toLowerCase())
+                );
+            }
+
+            container.innerHTML = filtered.map(verb => `
+                <div class="verb-card">
+                    <div class="verb-header">
+                        <div>
+                            <div class="verb-name">${verb.infinitive}</div>
+                            <div class="verb-english">"${verb.english}"</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="verb-category">${verb.category.toUpperCase()}</span>
+                            <span class="cefr-badge">${verb.cefr}</span>
+                        </div>
+                    </div>
+
+                    <div style="margin: 15px 0;">
+                        <strong>📖 Usage:</strong> ${verb.usage}
+                    </div>
+
+                    <div style="margin: 15px 0;">
+                        <strong>✨ Example:</strong>
+                        <div class="example-box">${verb.example}</div>
+                    </div>
+
+                    ${verb.conjugation ? `
+                    <div style="margin: 20px 0;">
+                        <strong>⚙️ Conjugations:</strong>
+                        <table class="conjugation-table">
+                            <tr>
+                                <th>Tense</th>
+                                <th>ich</th>
+                                <th>du</th>
+                                <th>er/sie/es</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Präsens</strong></td>
+                                <td>${verb.conjugation.präsens?.ich || ''}</td>
+                                <td>${verb.conjugation.präsens?.du || ''}</td>
+                                <td>${verb.conjugation.präsens?.er || ''}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Präteritum</strong></td>
+                                <td>${verb.conjugation.präteritum?.ich || ''}</td>
+                                <td>${verb.conjugation.präteritum?.du || ''}</td>
+                                <td>${verb.conjugation.präteritum?.er || ''}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Perfekt</strong></td>
+                                <td>${verb.conjugation.perfekt?.ich || ''}</td>
+                                <td>${verb.conjugation.perfekt?.du || ''}</td>
+                                <td>${verb.conjugation.perfekt?.er || ''}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    ` : ''}
+
+                    ${verb.collocations ? `
+                    <div style="margin: 15px 0;">
+                        <strong>🎯 Common Collocations:</strong>
+                        <div style="margin-top: 10px;">
+                            ${verb.collocations.map(c => `<span class="collocation-tag">${c}</span>`).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+
+                    ${verb.etymology ? `<div class="etymology">📜 Etymology: ${verb.etymology}</div>` : ''}
+                    ${verb.mnemonicTip ? `<div class="mnemonic">🧠 Mnemonic: ${verb.mnemonicTip}</div>` : ''}
+                    <div class="frequency-badge">${verb.frequency}</div>
+
+                    ${verb.prefixes && verb.prefixes.length > 0 ? `
+                    <div style="margin-top: 20px;">
+                        <strong>➕ Prefix Variations:</strong>
+                        ${verb.prefixes.map(p => `
+                            <div class="prefix-item">
+                                <div class="prefix-header">
+                                    <span class="prefix-name">${p.prefix}</span>
+                                    <span>${p.meaning}</span>
+                                </div>
+                                <div class="example-box">${p.example}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+            loadVocabulary();
+        }
+
+        function searchVerbs() {
+            searchQuery = document.getElementById('searchInput').value;
+            loadVocabulary();
+        }
+
+        // ======== TRAINER LOGIC ========
+        let trainerMode = null;
+        let currentVerb = null;
+        let answered = false;
+
+        function startTrainer(mode) {
+            trainerMode = mode;
+            answered = false;
+            showNextQuestion();
+            document.getElementById('correctBtn').style.display = 'inline-block';
+            document.getElementById('partialBtn').style.display = 'inline-block';
+            document.getElementById('wrongBtn').style.display = 'inline-block';
+        }
+
+        function showNextQuestion() {
+            if (allVerbs.length === 0) return;
+            
+            currentVerb = allVerbs[Math.floor(Math.random() * allVerbs.length)];
+            let content = '';
+
+            switch(trainerMode) {
+                case 'de-en':
+                    content = `
+                        <div class="trainer-prompt">🇩🇪 ${currentVerb.infinitive}</div>
+                        <p>What does this mean in English?</p>
+                        <input type="text" class="answer-input" id="answer" placeholder="Type your answer..." autofocus>
+                    `;
+                    break;
+                case 'en-de':
+                    content = `
+                        <div class="trainer-prompt">🇬🇧 ${currentVerb.english}</div>
+                        <p>What is the German verb?</p>
+                        <input type="text" class="answer-input" id="answer" placeholder="Type your answer..." autofocus>
+                    `;
+                    break;
+                case 'conjugate':
+                    content = `
+                        <div class="trainer-prompt">${currentVerb.infinitive}</div>
+                        <p>Conjugate for: du (Present)</p>
+                        <input type="text" class="answer-input" id="answer" placeholder="Type your answer..." autofocus>
+                        <small style="color: #999;">Correct: ${currentVerb.conjugation.präsens.du}</small>
+                    `;
+                    break;
+                case 'prefix':
+                    if (!currentVerb.prefixes || currentVerb.prefixes.length === 0) {
+                        showNextQuestion();
+                        return;
+                    }
+                    const prefix = currentVerb.prefixes[Math.floor(Math.random() * currentVerb.prefixes.length)];
+                    content = `
+                        <div class="trainer-prompt">${prefix.prefix}</div>
+                        <p>What does this prefix mean when used with: <strong>${currentVerb.infinitive}</strong>?</p>
+                        <input type="text" class="answer-input" id="answer" placeholder="Type your answer..." autofocus>
+                        <small style="color: #999;">Correct: ${prefix.meaning}</small>
+                    `;
+                    break;
+            }
+
+            document.getElementById('trainerContent').innerHTML = content;
+            answered = false;
+        }
+
+        function recordAnswer(rating) {
+            if (answered) return;
+            answered = true;
+
+            // Simulate SRS (Spaced Repetition System)
+            let nextReview = '';
+            if (rating === 'correct') nextReview = 'Next review: 3 days';
+            else if (rating === 'partial') nextReview = 'Next review: 1 day';
+            else nextReview = 'Next review: Tomorrow';
+
+            document.getElementById('progressText').textContent = `${nextReview} • Keep going! 💪`;
+            
+            setTimeout(showNextQuestion, 1500);
+        }
+
+        // ======== INITIALIZATION ========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load sample verbs (in real app, would load from verbs-db.js)
+            if (typeof verbDatabase !== 'undefined') {
+                allVerbs = verbDatabase;
+                loadVocabulary();
+            }
+        });
+    </script>
+
+    <!-- Load verb database -->
+    <script src="verbs-db.js"></script>
+</body>
+</html>
