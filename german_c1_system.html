@@ -1,0 +1,966 @@
+<!-- ENHANCED GERMAN LEARNING SYSTEM - C1 LEVEL -->
+<!-- Save as: index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇩🇪 German C1 Mastery - Prefix & Noun System</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { font-size: 1.1em; opacity: 0.95; }
+
+        .tabs {
+            display: flex;
+            background: #f5f5f5;
+            border-bottom: 3px solid #667eea;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab:hover { background: #e8e8e8; }
+        .tab.active { background: white; border-bottom-color: #667eea; color: #667eea; }
+
+        .content-area {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.3s;
+        }
+
+        .content-area.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .prefix-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .prefix-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .prefix-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .meaning { color: #764ba2; font-weight: bold; margin: 10px 0; }
+        
+        .example {
+            background: white;
+            padding: 12px;
+            margin: 8px 0;
+            border-left: 3px solid #764ba2;
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        .example-de { color: #333; }
+        .example-en { color: #666; font-size: 0.95em; }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .table tr:hover { background: #f9f9f9; }
+
+        .noun-type {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 5px solid #e17055;
+        }
+
+        .gender-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 5px;
+            color: white;
+        }
+
+        .masculine { background: #3498db; }
+        .feminine { background: #e74c3c; }
+        .neuter { background: #2ecc71; }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .quiz-question {
+            background: white;
+            color: #333;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 5px solid #f5576c;
+        }
+
+        .option {
+            background: #f5f5f5;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover { background: #e0e0e0; transform: translateX(5px); }
+
+        .option.selected { background: #667eea; color: white; }
+
+        .button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 10px 5px 10px 0;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .tip-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .tip-box strong { color: #856404; }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-item {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+        }
+
+        .comparison-item.separable { border-color: #00b894; }
+        .comparison-item.inseparable { border-color: #d63031; }
+
+        @media (max-width: 768px) {
+            .container { border-radius: 0; }
+            .header { padding: 20px; }
+            .header h1 { font-size: 1.8em; }
+            .tabs { flex-direction: column; }
+            .tab { border: 1px solid #ddd; }
+            .content-area { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🇩🇪 German C1 Mastery System</h1>
+            <p>Master Verb Prefixes & Noun Declension for Advanced Proficiency</p>
+        </div>
+
+        <!-- TABS -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('verbs')">🎯 Verb Prefixes</button>
+            <button class="tab" onclick="switchTab('nouns')">📝 Noun System</button>
+            <button class="tab" onclick="switchTab('trainer')">💪 Trainer</button>
+            <button class="tab" onclick="switchTab('grammar')">📚 Grammar Rules</button>
+        </div>
+
+        <!-- CONTENT AREAS -->
+
+        <!-- TAB 1: VERB PREFIXES -->
+        <div id="verbs" class="content-area active">
+            <h2>🎯 Mastering German Verb Prefixes</h2>
+            <p style="font-size: 1.1em; color: #666; margin-bottom: 30px;">
+                German verb prefixes are <strong>THE key to C1 mastery</strong>. They completely transform verb meaning and indicate direction, intensity, and aspect.
+            </p>
+
+            <div class="tip-box">
+                <strong>🔑 Key Insight:</strong> There are only ~20 main prefixes. Master these and you can understand 70%+ of German verbs!
+            </div>
+
+            <!-- SEPARABLE PREFIXES -->
+            <h3>SEPARABLE PREFIXES (Trennbar)</h3>
+            <p style="color: #666; margin-bottom: 20px;"><strong>Rule:</strong> In present tense, these prefixes SEPARATE from the verb and go to the END of the clause.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-item separable">
+                    <h4>✅ ab- (away, off)</h4>
+                    <p><strong>Meaning:</strong> Departure, reduction, completion</p>
+                    <div class="example">
+                        <div class="example-de"><strong>abfahren:</strong> Der Zug fährt ab.</div>
+                        <div class="example-en">The train departs.</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>abnehmen:</strong> Sie nimmt ab.</div>
+                        <div class="example-en">She loses weight.</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item separable">
+                    <h4>✅ an- (on, at, start)</h4>
+                    <p><strong>Meaning:</strong> Beginning, attachment, activation</p>
+                    <div class="example">
+                        <div class="example-de"><strong>anfangen:</strong> Ich fange an!</div>
+                        <div class="example-en">I'm starting!</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>ankommen:</strong> Der Zug kommt an.</div>
+                        <div class="example-en">The train arrives.</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item separable">
+                    <h4>✅ auf- (up, open, on)</h4>
+                    <p><strong>Meaning:</strong> Upward motion, opening, distribution</p>
+                    <div class="example">
+                        <div class="example-de"><strong>aufstehen:</strong> Ich stehe auf.</div>
+                        <div class="example-en">I get up.</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>aufmachen:</strong> Mach die Tür auf!</div>
+                        <div class="example-en">Open the door!</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item separable">
+                    <h4>✅ aus- (out, out of)</h4>
+                    <p><strong>Meaning:</strong> Outward motion, completion</p>
+                    <div class="example">
+                        <div class="example-de"><strong>ausgehen:</strong> Wir gehen aus.</div>
+                        <div class="example-en">We go out.</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>aussprechen:</strong> Wie spricht man das aus?</div>
+                        <div class="example-en">How do you pronounce that?</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item separable">
+                    <h4>✅ mit- (with, together)</h4>
+                    <p><strong>Meaning:</strong> Participation, cooperation</p>
+                    <div class="example">
+                        <div class="example-de"><strong>mitmachen:</strong> Machst du mit?</div>
+                        <div class="example-en">Are you participating?</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>mitkommen:</strong> Komm mit mir mit!</div>
+                        <div class="example-en">Come with me!</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item separable">
+                    <h4>✅ zu- (to, closed)</h4>
+                    <p><strong>Meaning:</strong> Towards, closing, additional</p>
+                    <div class="example">
+                        <div class="example-de"><strong>zumachen:</strong> Mach die Tür zu!</div>
+                        <div class="example-en">Close the door!</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>zusehen:</strong> Ich sehe dir zu.</div>
+                        <div class="example-en">I'm watching you.</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item separable">
+                    <h4>✅ zurück- (back)</h4>
+                    <p><strong>Meaning:</strong> Return, backward motion</p>
+                    <div class="example">
+                        <div class="example-de"><strong>zurückkommen:</strong> Wann kommst du zurück?</div>
+                        <div class="example-en">When are you coming back?</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>zurückgeben:</strong> Gib mir das Buch zurück!</div>
+                        <div class="example-en">Give me the book back!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INSEPARABLE PREFIXES -->
+            <h3 style="margin-top: 40px;">INSEPARABLE PREFIXES (Untrennbar)</h3>
+            <p style="color: #666; margin-bottom: 20px;"><strong>Rule:</strong> These prefixes NEVER separate. They stay attached to the verb in ALL tenses.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-item inseparable">
+                    <h4>❌ be- (to provide, cover)</h4>
+                    <p><strong>Meaning:</strong> Making, providing, emphasis</p>
+                    <div class="example">
+                        <div class="example-de"><strong>besuchen:</strong> Wir besuchen die Familie.</div>
+                        <div class="example-en">We visit the family.</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>beenden:</strong> Ich habe die Arbeit beendet.</div>
+                        <div class="example-en">I finished the work.</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item inseparable">
+                    <h4>❌ er- (achieve, create)</h4>
+                    <p><strong>Meaning:</strong> Achievement, creation, completion</p>
+                    <div class="example">
+                        <div class="example-de"><strong>erreichen:</strong> Wir haben das Ziel erreicht.</div>
+                        <div class="example-en">We achieved the goal.</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>erfinden:</strong> Wer hat das erfunden?</div>
+                        <div class="example-en">Who invented that?</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item inseparable">
+                    <h4>❌ ver- (away, through)</h4>
+                    <p><strong>Meaning:</strong> Completion, change, error, distribution</p>
+                    <div class="example">
+                        <div class="example-de"><strong>vergeben:</strong> Kannst du mir vergeben?</div>
+                        <div class="example-en">Can you forgive me?</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>verlassen:</strong> Er hat die Stadt verlassen.</div>
+                        <div class="example-en">He left the city.</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item inseparable">
+                    <h4>❌ über- (over, across)</h4>
+                    <p><strong>Meaning:</strong> Excess, transfer, crossing</p>
+                    <div class="example">
+                        <div class="example-de"><strong>übersetzen:</strong> Kannst du das übersetzen?</div>
+                        <div class="example-en">Can you translate that?</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>überzeugen:</strong> Mich überzeugst du nicht.</div>
+                        <div class="example-en">You don't convince me.</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item inseparable">
+                    <h4>❌ zer- (break, destroy)</h4>
+                    <p><strong>Meaning:</strong> Destruction, breaking into pieces</p>
+                    <div class="example">
+                        <div class="example-de"><strong>zerstören:</strong> Der Sturm zerstörte alles.</div>
+                        <div class="example-en">The storm destroyed everything.</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>zerbrechen:</strong> Das Glas ist zerbrochen.</div>
+                        <div class="example-en">The glass broke.</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item inseparable">
+                    <h4>❌ ent- (away, out)</h4>
+                    <p><strong>Meaning:</strong> Removal, separation, opposite</p>
+                    <div class="example">
+                        <div class="example-de"><strong>entstehen:</strong> Hier entsteht ein neues Gebäude.</div>
+                        <div class="example-en">A new building is being built here.</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-de"><strong>entlaufen:</strong> Der Hund ist mir entlaufen.</div>
+                        <div class="example-en">The dog escaped from me.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box" style="margin-top: 40px;">
+                <strong>💡 Pro Tip for C1:</strong> When you see an unfamiliar verb, first identify the prefix. The prefix often tells you the direction or aspect, making the meaning predictable even if you don't know the root verb!
+            </div>
+        </div>
+
+        <!-- TAB 2: NOUN SYSTEM -->
+        <div id="nouns" class="content-area">
+            <h2>📝 The German Noun System: Gender, Case, Declension</h2>
+            <p style="font-size: 1.1em; color: #666; margin-bottom: 30px;">
+                German nouns have <strong>3 genders</strong> (Der, Die, Das), <strong>4 cases</strong> (Nominative, Accusative, Dative, Genitive), and plurals. This is your C1 foundation.
+            </p>
+
+            <h3>3 Genders of German</h3>
+            <div class="comparison-grid">
+                <div class="noun-type" style="background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); color: white;">
+                    <h4 style="color: white;">MASCULINE - der</h4>
+                    <p><strong>Definite Article:</strong> der, den, dem, des</p>
+                    <p><strong>Indefinite Article:</strong> ein, einen, einem, eines</p>
+                    <p><strong>Common Suffixes:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>-er: der Lehrer (teacher)</li>
+                        <li>-or: der Professor</li>
+                        <li>-ist: der Psychologist</li>
+                        <li>-ling: der Schmetterling (butterfly)</li>
+                        <li>-ismus: der Kapitalismus</li>
+                    </ul>
+                </div>
+
+                <div class="noun-type" style="background: linear-gradient(135deg, #f368e0 0%, #d63031 100%); color: white;">
+                    <h4 style="color: white;">FEMININE - die</h4>
+                    <p><strong>Definite Article:</strong> die, die, der, der</p>
+                    <p><strong>Indefinite Article:</strong> eine, eine, einer, einer</p>
+                    <p><strong>Common Suffixes:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>-in: die Lehrerin (female teacher)</li>
+                        <li>-heit: die Freiheit (freedom)</li>
+                        <li>-keit: die Möglichkeit (possibility)</li>
+                        <li>-ung: die Zeitung (newspaper)</li>
+                        <li>-tion: die Nation</li>
+                    </ul>
+                </div>
+
+                <div class="noun-type" style="background: linear-gradient(135deg, #55efc4 0%, #00b894 100%); color: white;">
+                    <h4 style="color: white;">NEUTER - das</h4>
+                    <p><strong>Definite Article:</strong> das, das, dem, des</p>
+                    <p><strong>Indefinite Article:</strong> ein, ein, einem, eines</p>
+                    <p><strong>Common Suffixes:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>-chen: das Häuschen (little house)</li>
+                        <li>-lein: das Tischchen (little table)</li>
+                        <li>-ment: das Argument</li>
+                        <li>-tum: das Datum</li>
+                        <li>-nis: das Geheimnis (secret)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px;">4 Cases of German</h3>
+            <div class="tip-box">
+                <strong>📌 Remember:</strong> The case tells you the function of the noun in the sentence. Nominative = subject. Accusative = direct object. Dative = indirect object. Genitive = possession.
+            </div>
+
+            <h4 style="margin-top: 20px; color: #667eea;">NOMINATIVE (Nominativ) - Subject / Predicate</h4>
+            <p><strong>Function:</strong> Who or what is doing the action?</p>
+            <div class="example">
+                <div class="example-de"><strong>Der Lehrer</strong> erklärt die Lektion.</div>
+                <div class="example-en">The teacher explains the lesson. [Teacher = subject]</div>
+            </div>
+
+            <h4 style="margin-top: 20px; color: #667eea;">ACCUSATIVE (Akkusativ) - Direct Object</h4>
+            <p><strong>Function:</strong> Who or what is receiving the action directly?</p>
+            <div class="example">
+                <div class="example-de">Ich sehe <strong>den Mann</strong>.</div>
+                <div class="example-en">I see the man. [Man = direct object]</div>
+            </div>
+
+            <h4 style="margin-top: 20px; color: #667eea;">DATIVE (Dativ) - Indirect Object</h4>
+            <p><strong>Function:</strong> To whom or for whom? After certain prepositions.</p>
+            <div class="example">
+                <div class="example-de">Ich gebe <strong>dem Lehrer</strong> einen Kaffee.</div>
+                <div class="example-en">I give the teacher a coffee. [Teacher = indirect object]</div>
+            </div>
+            <div class="example">
+                <div class="example-de">Das Buch liegt neben <strong>dem Fenster</strong>.</div>
+                <div class="example-en">The book lies next to the window. [Dative after "neben"]</div>
+            </div>
+
+            <h4 style="margin-top: 20px; color: #667eea;">GENITIVE (Genitiv) - Possession</h4>
+            <p><strong>Function:</strong> Who does it belong to? (The "of" case)</p>
+            <div class="example">
+                <div class="example-de">Das ist das Buch <strong>des Lehrers</strong>.</div>
+                <div class="example-en">That is the book of the teacher. [Possession]</div>
+            </div>
+
+            <h3 style="margin-top: 40px;">Complete Declension Tables</h3>
+
+            <h4 style="color: #0984e3; margin-top: 20px;">DER MANN (The Man) - Masculine</h4>
+            <table class="table">
+                <tr>
+                    <th>Case</th>
+                    <th>Singular (Definite)</th>
+                    <th>Singular (Indefinite)</th>
+                    <th>Plural</th>
+                </tr>
+                <tr>
+                    <td><strong>Nominative</strong> (Subject)</td>
+                    <td>der Mann</td>
+                    <td>ein Mann</td>
+                    <td>die Männer</td>
+                </tr>
+                <tr>
+                    <td><strong>Accusative</strong> (Direct Object)</td>
+                    <td>den Mann</td>
+                    <td>einen Mann</td>
+                    <td>die Männer</td>
+                </tr>
+                <tr>
+                    <td><strong>Dative</strong> (Indirect Object)</td>
+                    <td>dem Mann</td>
+                    <td>einem Mann</td>
+                    <td>den Männern</td>
+                </tr>
+                <tr>
+                    <td><strong>Genitive</strong> (Possession)</td>
+                    <td>des Mannes</td>
+                    <td>eines Mannes</td>
+                    <td>der Männer</td>
+                </tr>
+            </table>
+
+            <h4 style="color: #d63031; margin-top: 20px;">DIE FRAU (The Woman) - Feminine</h4>
+            <table class="table">
+                <tr>
+                    <th>Case</th>
+                    <th>Singular (Definite)</th>
+                    <th>Singular (Indefinite)</th>
+                    <th>Plural</th>
+                </tr>
+                <tr>
+                    <td><strong>Nominative</strong></td>
+                    <td>die Frau</td>
+                    <td>eine Frau</td>
+                    <td>die Frauen</td>
+                </tr>
+                <tr>
+                    <td><strong>Accusative</strong></td>
+                    <td>die Frau</td>
+                    <td>eine Frau</td>
+                    <td>die Frauen</td>
+                </tr>
+                <tr>
+                    <td><strong>Dative</strong></td>
+                    <td>der Frau</td>
+                    <td>einer Frau</td>
+                    <td>den Frauen</td>
+                </tr>
+                <tr>
+                    <td><strong>Genitive</strong></td>
+                    <td>der Frau</td>
+                    <td>einer Frau</td>
+                    <td>der Frauen</td>
+                </tr>
+            </table>
+
+            <h4 style="color: #00b894; margin-top: 20px;">DAS KIND (The Child) - Neuter</h4>
+            <table class="table">
+                <tr>
+                    <th>Case</th>
+                    <th>Singular (Definite)</th>
+                    <th>Singular (Indefinite)</th>
+                    <th>Plural</th>
+                </tr>
+                <tr>
+                    <td><strong>Nominative</strong></td>
+                    <td>das Kind</td>
+                    <td>ein Kind</td>
+                    <td>die Kinder</td>
+                </tr>
+                <tr>
+                    <td><strong>Accusative</strong></td>
+                    <td>das Kind</td>
+                    <td>ein Kind</td>
+                    <td>die Kinder</td>
+                </tr>
+                <tr>
+                    <td><strong>Dative</strong></td>
+                    <td>dem Kind</td>
+                    <td>einem Kind</td>
+                    <td>den Kindern</td>
+                </tr>
+                <tr>
+                    <td><strong>Genitive</strong></td>
+                    <td>des Kindes</td>
+                    <td>eines Kindes</td>
+                    <td>der Kinder</td>
+                </tr>
+            </table>
+
+            <div class="tip-box" style="margin-top: 30px;">
+                <strong>🎯 C1 Strategy:</strong> Don't memorize declension tables. Instead, <strong>listen to and read extensively</strong>. Your brain will absorb the patterns. Passive recognition beats active memorization at this level!
+            </div>
+        </div>
+
+        <!-- TAB 3: TRAINER -->
+        <div id="trainer" class="content-area">
+            <h2>💪 Interactive Trainer (Spaced Repetition)</h2>
+            <p style="font-size: 1.1em; color: #666; margin-bottom: 20px;">
+                Use this trainer to practice verb prefixes and noun cases. The system tracks your progress with spaced repetition.
+            </p>
+
+            <div class="quiz-section">
+                <h3 style="color: white; margin-bottom: 20px;">🎓 Practice Mode</h3>
+
+                <div class="quiz-question" id="question-container">
+                    <p style="margin-bottom: 20px;"><strong>Select a training mode:</strong></p>
+                    <button class="button" onclick="startMode('prefix-meaning')">🔤 Prefix → Meaning</button>
+                    <button class="button" onclick="startMode('verb-completion')">✏️ Complete the Verb</button>
+                    <button class="button" onclick="startMode('case-practice')">📋 Case Matching</button>
+                    <button class="button" onclick="startMode('sentence-building')">🏗️ Build Sentences</button>
+                </div>
+            </div>
+
+            <!-- Hidden training content (revealed on selection) -->
+            <div id="training-content" style="display:none; margin-top: 30px;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+                <p style="text-align: center; color: #666;">Progress: <span id="progress-text">0/10</span></p>
+
+                <div class="quiz-question" id="current-question" style="margin-top: 20px;">
+                    <!-- Questions will appear here -->
+                </div>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="button" onclick="nextQuestion()">Next Question →</button>
+                    <button class="button" style="background: #95a5a6;" onclick="resetTrainer()">← Back</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: GRAMMAR RULES -->
+        <div id="grammar" class="content-area">
+            <h2>📚 Core German Grammar Rules (C1 Level)</h2>
+
+            <h3>1️⃣ Word Order: Main Clause (Hauptsatz)</h3>
+            <p><strong>Structure:</strong> Subject | Conjugated Verb | Object | Separable Prefix / Past Participle</p>
+            <div class="example">
+                <div class="example-de"><strong>Ich</strong> | <strong>mache</strong> | das Fenster | <strong>auf</strong>.</div>
+                <div class="example-en">I | open | the window | (up).</div>
+                <div style="margin-top: 10px; font-size: 0.9em; color: #555;">Position 1: Subject | Position 2: Verb | End: Separable prefix</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>⚠️ Warning:</strong> The conjugated verb is ALWAYS in position 2 in main clauses. This is not optional—it's the fundamental rule of German word order!
+            </div>
+
+            <h3 style="margin-top: 30px;">2️⃣ Word Order: Subordinate Clause (Nebensatz)</h3>
+            <p><strong>Structure:</strong> Conjunction | Subject | Object | Conjugated Verb | Prefix/Past Participle</p>
+            <div class="example">
+                <div class="example-de">Ich weiß, dass | <strong>er</strong> | das Fenster | <strong>aufmacht</strong>.</div>
+                <div class="example-en">I know that | he | the window | opens (up).</div>
+                <div style="margin-top: 10px; font-size: 0.9em; color: #555;">The VERB goes to the END in subordinate clauses!</div>
+            </div>
+
+            <h3 style="margin-top: 30px;">3️⃣ Separable vs. Inseparable: Position Matters</h3>
+            <table class="table">
+                <tr>
+                    <th>Prefix Type</th>
+                    <th>Present Tense</th>
+                    <th>Infinitive</th>
+                    <th>Past Participle</th>
+                </tr>
+                <tr>
+                    <td><strong>Separable (ab-)</strong></td>
+                    <td>Ich mache <strong>ab</strong></td>
+                    <td><strong>ab</strong>machen</td>
+                    <td>abge<strong>macht</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Inseparable (be-)</strong></td>
+                    <td>Ich <strong>be</strong>ende</td>
+                    <td><strong>be</strong>enden</td>
+                    <td><strong>be</strong>endet</td>
+                </tr>
+            </table>
+
+            <h3 style="margin-top: 30px;">4️⃣ Dative vs. Accusative: Common Prepositions</h3>
+            <p><strong>Two-Way Prepositions (Direction = Accusative, Location = Dative):</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>an</strong> (at, on): <em>Ich hänge das Bild an die Wand</em> (ACC - direction) vs. <em>Das Bild hängt an der Wand</em> (DAT - location)</li>
+                <li><strong>in</strong> (in, into): <em>Ich gehe in das Zimmer</em> (ACC - direction) vs. <em>Ich bin im Zimmer</em> (DAT - location)</li>
+                <li><strong>auf</strong> (on, onto): <em>Ich lege das Buch auf den Tisch</em> (ACC - direction) vs. <em>Das Buch liegt auf dem Tisch</em> (DAT - location)</li>
+                <li><strong>unter</strong> (under, underneath): <em>Ich stelle die Lampe unter den Schrank</em> (ACC) vs. <em>Die Lampe steht unter dem Schrank</em> (DAT)</li>
+                <li><strong>vor</strong> (in front of, before): <em>Ich stelle mich vor das Fenster</em> (ACC) vs. <em>Ich stehe vor dem Fenster</em> (DAT)</li>
+                <li><strong>hinter</strong> (behind, back): <em>Der Baum ist hinter dem Haus</em> (DAT)</li>
+                <li><strong>über</strong> (over, above): <em>Ich hänge das Seil über den Fluss</em> (ACC) vs. <em>Das Seil hängt über dem Fluss</em> (DAT)</li>
+                <li><strong>neben</strong> (beside, next to): <em>Ich sitze neben dir</em> (DAT)</li>
+                <li><strong>zwischen</strong> (between): <em>Ich sitze zwischen dir und ihm</em> (DAT)</li>
+            </ul>
+
+            <h3 style="margin-top: 30px;">5️⃣ Tense System</h3>
+            <table class="table">
+                <tr>
+                    <th>Tense</th>
+                    <th>Formation</th>
+                    <th>Example</th>
+                    <th>Usage</th>
+                </tr>
+                <tr>
+                    <td><strong>Present</strong></td>
+                    <td>Base verb + ending</td>
+                    <td>Ich mache</td>
+                    <td>Current action, habit, future with time</td>
+                </tr>
+                <tr>
+                    <td><strong>Präteritum</strong></td>
+                    <td>Stem change (irregular) or -te (regular)</td>
+                    <td>Ich machte</td>
+                    <td>Written narrative, fairy tales</td>
+                </tr>
+                <tr>
+                    <td><strong>Perfekt</strong></td>
+                    <td>haben/sein + past participle</td>
+                    <td>Ich habe gemacht</td>
+                    <td>Spoken past, completed action</td>
+                </tr>
+                <tr>
+                    <td><strong>Plusquamperfekt</strong></td>
+                    <td>hatte/war + past participle</td>
+                    <td>Ich hatte gemacht</td>
+                    <td>Earlier of two past events</td>
+                </tr>
+                <tr>
+                    <td><strong>Futur I</strong></td>
+                    <td>werden + infinitive</td>
+                    <td>Ich werde machen</td>
+                    <td>Future plan, prediction</td>
+                </tr>
+                <tr>
+                    <td><strong>Konjunktiv II</strong></td>
+                    <td>würde + infinitive (or conditional forms)</td>
+                    <td>Ich würde machen</td>
+                    <td>Hypothetical, subjunctive mood</td>
+                </tr>
+            </table>
+
+            <h3 style="margin-top: 30px;">6️⃣ Konjunktiv (Subjunctive) - C1 Essential</h3>
+            <p><strong>Konjunktiv II - Used for:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Hypothetical situations:</strong> <em>Wenn ich Zeit hätte, würde ich reisen.</em> (If I had time, I would travel.)</li>
+                <li><strong>Polite requests:</strong> <em>Könnten Sie mir helfen?</em> (Could you help me?)</li>
+                <li><strong>Contrary to fact:</strong> <em>Das wäre schön.</em> (That would be nice.)</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>Konjunktiv I - Used for:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Indirect speech (Indirect Rede):</strong> <em>Er sagt, er sei krank.</em> (He says he is sick.) [Formal, reportive]</li>
+                <li><strong>News reports, journalism</strong></li>
+            </ul>
+
+            <h3 style="margin-top: 30px;">7️⃣ Relative Clauses - Advanced</h3>
+            <p><strong>Structure:</strong> Main clause | Relative pronoun | Subject | Object | Verb</p>
+            <div class="example">
+                <div class="example-de">Der Mann, <strong>den</strong> ich sehe, ist mein Lehrer.</div>
+                <div class="example-en">The man (whom) I see is my teacher.</div>
+                <div style="margin-top: 10px; font-size: 0.9em; color: #555;">Relative pronoun "den" is accusative singular masculine</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>🔑 Key:</strong> The relative pronoun must match the gender and case of its antecedent noun. The case is determined by its function in the relative clause.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all content areas
+            document.querySelectorAll('.content-area').forEach(el => el.classList.remove('active'));
+            // Show selected
+            document.getElementById(tabName).classList.add('active');
+            // Update tabs
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // TRAINER FUNCTIONALITY
+        let currentMode = null;
+        let currentQuestion = 0;
+        let score = 0;
+        let questions = [];
+
+        const trainingData = {
+            'prefix-meaning': [
+                { q: 'What does "ab-" mean?', options: ['away, off', 'on, start', 'up', 'out'], correct: 0 },
+                { q: 'What does "an-" mean?', options: ['away', 'on, at, start', 'up', 'back'], correct: 1 },
+                { q: 'What does "auf-" mean?', options: ['out', 'down', 'up, open, on', 'under'], correct: 2 },
+                { q: 'What does "aus-" mean?', options: ['on', 'with', 'out, out of', 'back'], correct: 2 },
+                { q: 'What does "mit-" mean?', options: ['away', 'with, together', 'up', 'under'], correct: 1 },
+                { q: 'What does "zu-" mean?', options: ['up', 'away', 'with', 'to, closed'], correct: 3 },
+                { q: 'What does "be-" mean?', options: ['back', 'to provide, cover', 'out', 'up'], correct: 1 },
+                { q: 'What does "er-" mean?', options: ['away', 'achieve, create', 'under', 'together'], correct: 1 },
+                { q: 'What does "ver-" mean?', options: ['on', 'away, through', 'up', 'with'], correct: 1 },
+                { q: 'What does "über-" mean?', options: ['down', 'out', 'over, across', 'back'], correct: 2 }
+            ],
+            'verb-completion': [
+                { q: 'Complete: Der Zug fährt um 8 Uhr ____.', options: ['ab', 'an', 'auf', 'aus'], correct: 0, answer: 'ab' },
+                { q: 'Complete: Die Schule fängt um 9 Uhr ____.', options: ['auf', 'ab', 'an', 'aus'], correct: 2, answer: 'an' },
+                { q: 'Complete: Mach bitte die Tür ____!', options: ['ab', 'zu', 'an', 'aus'], correct: 1, answer: 'zu' },
+                { q: 'Complete: Wir machen das Fenster ____.',options: ['zu', 'auf', 'an', 'ab'], correct: 1, answer: 'auf' },
+                { q: 'Complete: Der Film fängt jetzt ____.',options: ['ab', 'an', 'auf', 'aus'], correct: 1, answer: 'an' }
+            ],
+            'case-practice': [
+                { q: 'Der Mann (_____) sehe ich. [I see the man]', options: ['den', 'der', 'dem', 'des'], correct: 0 },
+                { q: 'Ich gebe _____ einen Kaffee. [I give the teacher a coffee]', options: ['dem Lehrer', 'den Lehrer', 'der Lehrer', 'des Lehrers'], correct: 0 },
+                { q: 'Das Buch gehört _____. [It belongs to the child]', options: ['das Kind', 'den Kind', 'dem Kind', 'des Kindes'], correct: 2 },
+                { q: 'Das ist _____ Buch. [That is the teacher\\'s book]', options: ['dem Lehrer', 'den Lehrer', 'des Lehrers', 'der Lehrer'], correct: 2 },
+                { q: 'Ich bin in _____.  [I am in the house]', options: ['das Haus', 'den Haus', 'dem Haus', 'des Hauses'], correct: 2 }
+            ]
+        };
+
+        function startMode(mode) {
+            currentMode = mode;
+            questions = trainingData[mode];
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('question-container').style.display = 'none';
+            document.getElementById('training-content').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestion >= questions.length) {
+                document.getElementById('current-question').innerHTML = `
+                    <h3>✅ Training Complete!</h3>
+                    <p>Your Score: <strong>${score}/${questions.length}</strong></p>
+                    <p>Percentage: <strong>${Math.round((score/questions.length)*100)}%</strong></p>
+                `;
+                return;
+            }
+
+            const q = questions[currentQuestion];
+            const progressPercent = ((currentQuestion) / questions.length) * 100;
+            document.getElementById('progress-bar-fill').style.width = progressPercent + '%';
+            document.getElementById('progress-text').textContent = `${currentQuestion}/${questions.length}`;
+
+            let html = `<h4>${q.q}</h4>`;
+            q.options.forEach((opt, i) => {
+                html += `<div class="option" onclick="selectAnswer(${i})">${opt}</div>`;
+            });
+
+            document.getElementById('current-question').innerHTML = html;
+        }
+
+        function selectAnswer(index) {
+            const q = questions[currentQuestion];
+            if (index === q.correct) {
+                score++;
+                document.querySelector('.option').style.background = '#2ecc71';
+            } else {
+                document.querySelector('.option').style.background = '#e74c3c';
+            }
+            setTimeout(nextQuestion, 800);
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            showQuestion();
+        }
+
+        function resetTrainer() {
+            document.getElementById('question-container').style.display = 'block';
+            document.getElementById('training-content').style.display = 'none';
+            currentQuestion = 0;
+            score = 0;
+        }
+    </script>
+</body>
+</html>
